@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Inventory</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Optional external libraries for QR and camera may be loaded here -->
+</head>
+<body>
+    <div class="language-switch">
+        <button id="lang-en">EN</button>
+        <button id="lang-es">ES</button>
+    </div>
+
+    <h1 data-i18n="title">Product Entry</h1>
+    <form id="product-form">
+        <div class="image-input">
+            <img id="product-image" src="" alt="" />
+            <div class="image-actions">
+                <button type="button" id="camera-btn" title="Use Camera">📷</button>
+                <button type="button" id="qr-scan-btn" title="Scan QR">📷</button>
+                <button type="button" id="print-qr-btn" title="Print QR">🖨️</button>
+            </div>
+            <div class="qr-visual" id="qr-code"></div>
+        </div>
+
+        <label data-i18n="assetId">Asset ID</label>
+        <input type="text" id="asset-id" required>
+
+        <label data-i18n="productName">Product Name</label>
+        <input type="text" id="product-name" required>
+
+        <div id="tax-container">
+            <label data-i18n="tax">Tax/VAT</label>
+            <input type="number" class="tax-input" min="0" step="0.01">
+        </div>
+        <button type="button" id="add-tax" class="add-btn">+</button>
+        <button type="button" id="remove-tax" class="remove-btn">-</button>
+
+        <label data-i18n="quantity">Quantity</label>
+        <input type="number" id="quantity" min="1" value="1">
+
+        <label data-i18n="description">Description</label>
+        <textarea id="description"></textarea>
+
+        <label data-i18n="purchaseAmount">Total Paid</label>
+        <input type="number" id="total-paid" min="0" step="0.01" required>
+
+        <label data-i18n="salePrice">Future Sale Price</label>
+        <input type="number" id="future-sale" min="0" step="0.01">
+
+        <div class="form-actions">
+            <button type="button" id="update-inventory" data-i18n="updateInventory">Update Inventory</button>
+            <button type="button" id="done" data-i18n="done">Done</button>
+        </div>
+    </form>
+
+    <h2 data-i18n="inventoryList">Inventory List</h2>
+    <table id="inventory-table">
+        <thead>
+            <tr>
+                <th data-i18n="productName">Product Name</th>
+                <th data-i18n="assetId">Asset ID</th>
+                <th data-i18n="purchaseAmount">Amount Paid</th>
+                <th data-i18n="tax">Tax Paid</th>
+                <th data-i18n="salePrice">Future Sale Price</th>
+                <th data-i18n="taxExpected">Tax Expected</th>
+                <th data-i18n="amountEarned">Amount to Earn</th>
+                <th data-i18n="percentEarnings">% Earnings</th>
+            </tr>
+        </thead>
+        <tbody id="inventory-body">
+        </tbody>
+        <tfoot>
+            <tr id="inventory-totals">
+                <!-- Totals will populate here -->
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
