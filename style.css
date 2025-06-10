@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.language-switch button {
+    margin-right: 5px;
+}
+
+form {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.image-input {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.image-actions button {
+    margin-right: 5px;
+}
+
+#product-image {
+    width: 150px;
+    height: 150px;
+    border: 1px dashed #ccc;
+    object-fit: cover;
+}
+
+.qr-visual {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #ccc;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.form-actions {
+    margin-top: 10px;
+}
+
+.add-btn, .remove-btn {
+    margin-left: 5px;
+}
