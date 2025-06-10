@@ -4,9 +4,10 @@ This repository contains a simple web-based inventory page. It demonstrates a fo
 
 ## Features
 - Product entry form with dynamic tax fields
-- Image placeholder with buttons for camera, QR scanning, and printing (needs implementation)
-- QR code visualization (placeholder)
+- Capture product images using the device camera
+- QR scanning placeholder triggered by the `-` icon
+- QR printing using a QR icon with a message reminder
 - Inventory list with totals
-- Basic i18n with EN/ES buttons and auto detection
+- Basic i18n with a single language toggle button that auto-detects the user language
 
 This project is intended as a starting point and does not yet integrate with external services such as Flutter, Firebase, or logistics systems.

@@ -9,8 +9,7 @@
 </head>
 <body>
     <div class="language-switch">
-        <button id="lang-en">EN</button>
-        <button id="lang-es">ES</button>
+        <button id="lang-toggle">EN</button>
     </div>
 
     <h1 data-i18n="title">Product Entry</h1>
@@ -18,9 +17,11 @@
         <div class="image-input">
             <img id="product-image" src="" alt="" />
             <div class="image-actions">
-                <button type="button" id="camera-btn" title="Use Camera">📷</button>
-                <button type="button" id="qr-scan-btn" title="Scan QR">📷</button>
-                <button type="button" id="print-qr-btn" title="Print QR">🖨️</button>
+                <button type="button" id="camera-btn" title="Take Picture">📷</button>
+                <button type="button" id="qr-scan-btn" title="Scan">-</button>
+                <button type="button" id="print-qr-btn" title="Print QR">🔳</button>
+                <span id="print-qr-msg" class="info-msg" data-i18n="printQrMsg"></span>
+                <input type="file" accept="image/*" capture="environment" id="camera-input" style="display:none">
             </div>
             <div class="qr-visual" id="qr-code"></div>
         </div>
