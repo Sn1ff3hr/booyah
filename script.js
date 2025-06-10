@@ -1,3 +1,4 @@
+'use strict';
 // Simple i18n dictionary
 const translations = {
     en: {
@@ -168,6 +169,10 @@ function init() {
     document.getElementById('camera-input').addEventListener('change', handleImageSelect);
     document.getElementById('qr-scan-btn').addEventListener('click', scanQRCode);
     document.getElementById('print-qr-btn').addEventListener('click', printQRCode);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
