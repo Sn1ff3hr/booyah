@@ -56,3 +56,9 @@ th {
 .add-btn, .remove-btn {
     margin-left: 5px;
 }
+
+.info-msg {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #555;
+}

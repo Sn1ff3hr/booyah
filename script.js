@@ -1,3 +1,5 @@
+'use strict';
+const DEFAULT_TAX_RATE = 0.10;
 // Simple i18n dictionary
 const translations = {
     en: {
@@ -14,7 +16,8 @@ const translations = {
         inventoryList: 'Inventory List',
         taxExpected: 'Tax Expected',
         amountEarned: 'Amount to Earn',
-        percentEarnings: '% Earnings'
+        percentEarnings: '% Earnings',
+        printQrMsg: "To print product details from the form, ensure it's complete. This will print the current page."
     },
     es: {
         title: 'Ingreso de Producto',
@@ -30,7 +33,8 @@ const translations = {
         inventoryList: 'Lista de Inventario',
         taxExpected: 'Impuesto Esperado',
         amountEarned: 'Monto a Ganar',
-        percentEarnings: '% Ganancias'
+        percentEarnings: '% Ganancias',
+        printQrMsg: "Para imprimir los detalles del producto del formulario, asegúrese de que esté completo. Esto imprimirá la página actual."
     }
 };
 
@@ -44,6 +48,19 @@ function translatePage(lang) {
             el.textContent = translations[currentLang][key];
         }
     });
+    updateLangButton();
+}
+
+function updateLangButton() {
+    const btn = document.getElementById('lang-toggle');
+    if (btn) {
+        btn.textContent = currentLang.toUpperCase();
+    }
+}
+
+function toggleLanguage() {
+    const newLang = currentLang === 'en' ? 'es' : 'en';
+    translatePage(newLang);
 }
 
 function addTaxField() {
@@ -73,7 +90,7 @@ function updateInventory() {
     const sale = parseFloat(document.getElementById('future-sale').value) || 0;
     const quantity = parseInt(document.getElementById('quantity').value, 10) || 0;
 
-    const taxExpected = sale * 0.15; // placeholder
+    const taxExpected = sale * DEFAULT_TAX_RATE; // placeholder
     const amountEarned = (sale - paid) * quantity;
     const percentEarnings = sale ? ((sale - paid) / sale) * 100 : 0;
 
@@ -116,13 +133,47 @@ function updateTotals() {
     `;
 }
 
+async function openCamera() {
+    const input = document.getElementById('camera-input');
+    if (input) {
+        input.click();
+    }
+}
+
+function handleImageSelect(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        document.getElementById('product-image').src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
+
+function scanQRCode() {
+    console.warn('QR scanning feature not implemented. This button is a placeholder.');
+}
+
+function printQRCode() {
+    const msg = document.getElementById('print-qr-msg');
+    if (msg) msg.textContent = translations[currentLang].printQrMsg;
+    window.print();
+}
+
 function init() {
     translatePage(currentLang);
-    document.getElementById('lang-en').addEventListener('click', () => translatePage('en'));
-    document.getElementById('lang-es').addEventListener('click', () => translatePage('es'));
+    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
     document.getElementById('add-tax').addEventListener('click', addTaxField);
     document.getElementById('remove-tax').addEventListener('click', removeTaxField);
     document.getElementById('update-inventory').addEventListener('click', updateInventory);
+    document.getElementById('camera-btn').addEventListener('click', openCamera);
+    document.getElementById('camera-input').addEventListener('change', handleImageSelect);
+    document.getElementById('qr-scan-btn').addEventListener('click', scanQRCode);
+    document.getElementById('print-qr-btn').addEventListener('click', printQRCode);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
