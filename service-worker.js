@@ -3,6 +3,9 @@ self.addEventListener('install', event => {
     caches.open('inventory-cache-v1').then(cache => cache.addAll([
       '/',
       '/index.html',
+      '/owner.html',
+      '/consumer.html',
+      '/android.html',
       '/style.css',
       '/script.js',
       '/manifest.json'
