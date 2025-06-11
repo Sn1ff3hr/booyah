@@ -62,3 +62,278 @@ th {
     font-size: 0.9em;
     color: #555;
 }
+/* Styles for owner page */
+.owner-page {
+    font-family: sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+}
+.owner-page .section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.owner-page h2 {
+    margin-top: 0;
+}
+.owner-page .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.owner-page label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.owner-page input,
+.owner-page textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.owner-page .image-preview {
+    border: 1px dashed #ccc;
+    padding: 5px;
+    height: 150px;
+    object-fit: contain;
+}
+.owner-page table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.owner-page th,
+.owner-page td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.owner-page th {
+    background: #eee;
+}
+.owner-page .danger {
+    color: red;
+    font-weight: bold;
+}
+
+/* Styles for consumer catalog page */
+.consumer-page {
+    font-family: sans-serif;
+    background: #f8f8f8;
+    padding: 20px;
+}
+.consumer-page h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.consumer-page .catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+.consumer-page .product {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.consumer-page .product img {
+    width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+.consumer-page .product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.consumer-page .product-price {
+    color: green;
+    margin-bottom: 10px;
+}
+.consumer-page .qty-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.consumer-page .qty-control button {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+.consumer-page .checkout {
+    margin-top: 40px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.consumer-page .checkout input[type="text"],
+.consumer-page .checkout input[type="number"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.consumer-page .checkout-summary {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Styles for android-style catalog page */
+.android-page {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #212121;
+}
+.android-page header {
+    background-color: #6200ee;
+    color: white;
+    padding: 16px;
+    text-align: center;
+    font-size: 20px;
+}
+.android-page .carousel {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 16px;
+    position: relative;
+}
+.android-page .carousel img {
+    width: 100%;
+    max-width: 250px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+    scroll-snap-align: start;
+}
+.android-page .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    pointer-events: none;
+}
+.android-page .catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    padding: 16px;
+}
+.android-page .product {
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+}
+.android-page .product-name {
+    font-weight: bold;
+    margin-bottom: 4px;
+    text-align: center;
+}
+.android-page .product-price {
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+.android-page .qty-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.android-page .qty-control button {
+    background-color: #6200ee;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.android-page .checkout {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+.android-page .checkout input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+.android-page .checkout-summary {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+.android-page .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.android-page .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+.android-page .modal-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.android-page .modal button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+}
+.android-page .cancel-btn {
+    background-color: #ccc;
+}
+.android-page .pay-btn {
+    background-color: #4caf50;
+    color: white;
+}
+.android-page .status {
+    text-align: center;
+    padding: 10px;
+    background: #e0f7fa;
+    font-weight: bold;
+}
+
