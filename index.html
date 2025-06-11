@@ -3,6 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Demo inventory tracker with PWA features">
+    <meta name="keywords" content="inventory, demo, PWA">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self';">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Business Inventory">
+    <meta property="og:description" content="Demo inventory tracker with offline capability">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="/">
     <title>Business Inventory</title>
     <link rel="stylesheet" href="style.css">
     <!-- Optional external libraries for QR and camera may be loaded here -->
@@ -23,7 +33,6 @@
                 <span id="print-qr-msg" class="info-msg" data-i18n="printQrMsg"></span>
                 <input type="file" accept="image/*" capture="environment" id="camera-input" style="display:none">
             </div>
-            <div class="qr-visual" id="qr-code"></div>
         </div>
 
         <label data-i18n="assetId">Asset ID</label>
