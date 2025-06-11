@@ -1,3 +1,5 @@
+'use strict';
+const DEFAULT_TAX_RATE = 0.10;
 // Simple i18n dictionary
 const translations = {
     en: {
@@ -15,7 +17,7 @@ const translations = {
         taxExpected: 'Tax Expected',
         amountEarned: 'Amount to Earn',
         percentEarnings: '% Earnings',
-        printQrMsg: 'To print a QR code complete the form'
+        printQrMsg: "To print product details from the form, ensure it's complete. This will print the current page."
     },
     es: {
         title: 'Ingreso de Producto',
@@ -32,7 +34,7 @@ const translations = {
         taxExpected: 'Impuesto Esperado',
         amountEarned: 'Monto a Ganar',
         percentEarnings: '% Ganancias',
-        printQrMsg: 'Para imprimir el c\u00f3digo QR complete el formulario'
+        printQrMsg: "Para imprimir los detalles del producto del formulario, asegúrese de que esté completo. Esto imprimirá la página actual."
     }
 };
 
@@ -88,7 +90,7 @@ function updateInventory() {
     const sale = parseFloat(document.getElementById('future-sale').value) || 0;
     const quantity = parseInt(document.getElementById('quantity').value, 10) || 0;
 
-    const taxExpected = sale * 0.15; // placeholder
+    const taxExpected = sale * DEFAULT_TAX_RATE; // placeholder
     const amountEarned = (sale - paid) * quantity;
     const percentEarnings = sale ? ((sale - paid) / sale) * 100 : 0;
 
@@ -149,7 +151,7 @@ function handleImageSelect(event) {
 }
 
 function scanQRCode() {
-    alert('QR scanning not implemented');
+    console.warn('QR scanning feature not implemented. This button is a placeholder.');
 }
 
 function printQRCode() {
@@ -168,6 +170,10 @@ function init() {
     document.getElementById('camera-input').addEventListener('change', handleImageSelect);
     document.getElementById('qr-scan-btn').addEventListener('click', scanQRCode);
     document.getElementById('print-qr-btn').addEventListener('click', printQRCode);
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js');
+    }
 }
 
 document.addEventListener('DOMContentLoaded', init);
