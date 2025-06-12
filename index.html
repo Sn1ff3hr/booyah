@@ -25,39 +25,39 @@
     <h1 data-i18n="title">Product Entry</h1>
     <form id="product-form">
         <div class="image-input">
-            <img id="product-image" src="" alt="" />
+            <img id="product-image" src="" alt="Product image preview" />
             <div class="image-actions">
                 <button type="button" id="camera-btn" title="Take Picture">📷</button>
                 <button type="button" id="qr-scan-btn" title="Scan">-</button>
                 <button type="button" id="print-qr-btn" title="Print QR">🔳</button>
                 <span id="print-qr-msg" class="info-msg" data-i18n="printQrMsg"></span>
-                <input type="file" accept="image/*" capture="environment" id="camera-input" style="display:none">
+                <input type="file" accept="image/*" capture="environment" id="camera-input" style="display:none" aria-label="Upload image from camera">
             </div>
         </div>
 
-        <label data-i18n="assetId">Asset ID</label>
+        <label for="asset-id" data-i18n="assetId">Asset ID</label>
         <input type="text" id="asset-id" required>
 
-        <label data-i18n="productName">Product Name</label>
+        <label for="product-name" data-i18n="productName">Product Name</label>
         <input type="text" id="product-name" required>
 
         <div id="tax-container">
-            <label data-i18n="tax">Tax/VAT</label>
-            <input type="number" class="tax-input" min="0" step="0.01">
+            <label for="tax-1" data-i18n="tax">Tax/VAT</label>
+            <input type="number" id="tax-1" class="tax-input" min="0" step="0.01" aria-label="Tax/VAT">
         </div>
         <button type="button" id="add-tax" class="add-btn">+</button>
         <button type="button" id="remove-tax" class="remove-btn">-</button>
 
-        <label data-i18n="quantity">Quantity</label>
+        <label for="quantity" data-i18n="quantity">Quantity</label>
         <input type="number" id="quantity" min="1" value="1">
 
-        <label data-i18n="description">Description</label>
+        <label for="description" data-i18n="description">Description</label>
         <textarea id="description"></textarea>
 
-        <label data-i18n="purchaseAmount">Total Paid</label>
+        <label for="total-paid" data-i18n="purchaseAmount">Total Paid</label>
         <input type="number" id="total-paid" min="0" step="0.01" required>
 
-        <label data-i18n="salePrice">Future Sale Price</label>
+        <label for="future-sale" data-i18n="salePrice">Future Sale Price</label>
         <input type="number" id="future-sale" min="0" step="0.01">
 
         <div class="form-actions">

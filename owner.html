@@ -53,37 +53,37 @@
     <h2>Product Entry</h2>
     <div class="form-grid">
       <div>
-        <label>Asset ID</label>
-        <input type="text" placeholder="e.g. SKU1234">
+        <label for="owner-asset-id">Asset ID</label>
+        <input id="owner-asset-id" type="text" placeholder="e.g. SKU1234">
       </div>
       <div>
-        <label>Product Name</label>
-        <input type="text">
+        <label for="owner-product-name">Product Name</label>
+        <input id="owner-product-name" type="text">
       </div>
       <div>
-        <label>Upload Image</label>
-        <input type="file">
-        <img class="image-preview" src="" alt="Preview here">
+        <label for="owner-upload">Upload Image</label>
+        <input id="owner-upload" type="file" aria-label="Upload product image">
+        <img class="image-preview" src="" alt="Product image preview">
       </div>
       <div>
-        <label>Tax/VAT (%)</label>
-        <input type="number" step="0.01">
+        <label for="owner-tax">Tax/VAT (%)</label>
+        <input id="owner-tax" type="number" step="0.01">
       </div>
       <div>
-        <label>Quantity</label>
-        <input type="number">
+        <label for="owner-quantity">Quantity</label>
+        <input id="owner-quantity" type="number">
       </div>
       <div>
-        <label>Total Paid</label>
-        <input type="number" step="0.01">
+        <label for="owner-total-paid">Total Paid</label>
+        <input id="owner-total-paid" type="number" step="0.01">
       </div>
       <div>
-        <label>Future Sale Price</label>
-        <input type="number" step="0.01">
+        <label for="owner-sale-price">Future Sale Price</label>
+        <input id="owner-sale-price" type="number" step="0.01">
       </div>
       <div>
-        <label>Description</label>
-        <textarea rows="3"></textarea>
+        <label for="owner-description">Description</label>
+        <textarea id="owner-description" rows="3"></textarea>
       </div>
     </div>
   </div>
