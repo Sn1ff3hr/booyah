@@ -1,0 +1,19 @@
+{
+    "title": "Product Entry",
+    "assetId": "Asset ID",
+    "productName": "Product Name",
+    "tax": "Tax/VAT",
+    "quantity": "Quantity",
+    "description": "Description",
+    "purchaseAmount": "Total Paid",
+    "salePrice": "Future Sale Price",
+    "updateInventory": "Update Inventory",
+    "done": "Done",
+    "inventoryList": "Inventory List",
+    "taxExpected": "Tax Expected",
+    "amountEarned": "Amount to Earn",
+    "percentEarnings": "% Earnings",
+    "printQrMsg": "To print product details from the form, ensure it's complete. This will print the current page.",
+    "qrModalTitle": "Product QR Code",
+    "printQrButtonLabel": "Print QR Code"
+}
