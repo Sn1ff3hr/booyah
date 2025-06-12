@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self';">
+  <title>Business Inventory and Ledger</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body class="owner-page">
+  <div class="section">
+    <h2>Product Entry</h2>
+    <div class="form-grid">
+      <div>
+        <label>Asset ID</label>
+        <input type="text" placeholder="e.g. SKU1234">
+      </div>
+      <div>
+        <label>Product Name</label>
+        <input type="text">
+      </div>
+      <div>
+        <label>Upload Image</label>
+        <input type="file">
+        <img class="image-preview" src="" alt="Preview here">
+      </div>
+      <div>
+        <label>Tax/VAT (%)</label>
+        <input type="number" step="0.01">
+      </div>
+      <div>
+        <label>Quantity</label>
+        <input type="number">
+      </div>
+      <div>
+        <label>Total Paid</label>
+        <input type="number" step="0.01">
+      </div>
+      <div>
+        <label>Future Sale Price</label>
+        <input type="number" step="0.01">
+      </div>
+      <div>
+        <label>Description</label>
+        <textarea rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Inventory Ledger</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Asset ID</th>
+          <th>Total Paid</th>
+          <th>Tax/VAT</th>
+          <th>Sale Price</th>
+          <th>Earnings</th>
+          <th>Margin %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Example Widget</td>
+          <td>SKU123</td>
+          <td>$10.00</td>
+          <td>$1.20</td>
+          <td>$20.00</td>
+          <td>$8.80</td>
+          <td>88%</td>
+        </tr>
+        <tr>
+          <td>Low Profit Item</td>
+          <td>SKU456</td>
+          <td>$10.00</td>
+          <td>$1.20</td>
+          <td>$9.00</td>
+          <td class="danger">-$2.20</td>
+          <td class="danger">-22%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

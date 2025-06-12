@@ -32,5 +32,7 @@ These headers help align with NIST and CISA best practices.
 - QR printing using a QR icon with a message reminder
 - Inventory list with totals
 - Basic i18n with a single language toggle button that auto-detects the user language
+- Separate UIs for business owners (`owner.html`), end consumers (`consumer.html`),
+  and an Android-friendly view (`android.html`)
 
 This project is intended as a starting point and does not yet integrate with external services such as Flutter, Firebase, or logistics systems.
