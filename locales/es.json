@@ -5,7 +5,7 @@
     "tax": "Impuesto/IVA",
     "quantity": "Cantidad",
     "description": "Descripción",
-    "purchaseAmount": "Total Pagado",
+    "purchaseAmount": "Subtotal Pagado",
     "salePrice": "Precio de Venta",
     "updateInventory": "Actualizar Inventario",
     "done": "Hecho",

@@ -5,7 +5,7 @@
     "tax": "Tax/VAT",
     "quantity": "Quantity",
     "description": "Description",
-    "purchaseAmount": "Total Paid",
+    "purchaseAmount": "Subtotal Paid",
     "salePrice": "Future Sale Price",
     "updateInventory": "Update Inventory",
     "done": "Done",
