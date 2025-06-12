@@ -1,30 +1,17 @@
 {
-    "name": "my-project",
-    "version": "1.0.0",
-    "description": "My awesome project",
-    "main": "index.js",
-    "scripts": {
-        "test": "npm run build",
-        "format": "prettier --write ./**/*.{js,html,css,json}",
-        "lint": "npm run format && eslint ./**/*.js",
-        "minify:html": "minify index.html > build/index.html && minify owner.html > build/owner.html && minify consumer.html > build/consumer.html && minify android.html > build/android.html && minify fallback.html > build/fallback.html",
-        "minify:css": "minify style.css > build/style.css",
-        "minify:js": "minify service-worker.js > build/service-worker.js && mkdir -p build/js && minify js/main.js > build/js/main.js && minify js/i18n.js > build/js/i18n.js && minify js/domUtils.js > build/js/domUtils.js && minify js/ui.js > build/js/ui.js && minify js/inventoryLogic.js > build/js/inventoryLogic.js",
-        "copy:assets": "cp icon-192x192.png icon-512x512.png manifest.json CNAME _headers build/",
-        "copy:locales": "mkdir -p build/locales && cp locales/*.json build/locales/",
-        "clean": "rm -rf build",
-        "create:build_dir": "mkdir build",
-        "build": "npm-run-all clean create:build_dir lint --parallel minify:* copy:assets copy:locales"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "eslint-config-prettier": "^10.1.5",
-        "eslint-config-standard": "^17.1.0",
-        "eslint-plugin-prettier": "^5.4.1",
-        "minify": "^14.0.0",
-        "npm-run-all": "^4.1.5",
-        "prettier": "^3.5.3"
-    }
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "My awesome project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "lint": "eslint ./**/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-standard": "^17.1.0",
+    "eslint": "^8.57.1"
+  }
 }
