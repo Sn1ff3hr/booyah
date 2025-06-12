@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,67 +10,100 @@
 <body>
   <header>🛍️ Product Catalog</header>
 
-  <div class="carousel">
-    <img src="https://via.placeholder.com/250x160?text=1">
-    <img src="https://via.placeholder.com/250x160?text=2">
-    <img src="https://via.placeholder.com/250x160?text=3">
-    <img src="https://via.placeholder.com/250x160?text=4">
-    <img src="https://via.placeholder.com/250x160?text=5">
-    <div class="carousel-arrow">→</div>
-  </div>
+        <div class="carousel">
+            <img
+                src="https://via.placeholder.com/250x160?text=1"
+                alt="Slide 1"
+            />
+            <img
+                src="https://via.placeholder.com/250x160?text=2"
+                alt="Slide 2"
+            />
+            <img
+                src="https://via.placeholder.com/250x160?text=3"
+                alt="Slide 3"
+            />
+            <img
+                src="https://via.placeholder.com/250x160?text=4"
+                alt="Slide 4"
+            />
+            <img
+                src="https://via.placeholder.com/250x160?text=5"
+                alt="Slide 5"
+            />
+            <div class="carousel-arrow">→</div>
+        </div>
 
-  <div class="catalog">
-    <div class="product">
-      <div class="product-name">Product A</div>
-      <div class="product-price">$20.00</div>
-      <div class="qty-control">
-        <button>-</button>
-        <span>0</span>
-        <button>+</button>
-      </div>
-    </div>
-    <div class="product">
-      <div class="product-name">Product B</div>
-      <div class="product-price">$35.00</div>
-      <div class="qty-control">
-        <button>-</button>
-        <span>0</span>
-        <button>+</button>
-      </div>
-    </div>
-  </div>
+        <div class="catalog">
+            <div class="product">
+                <div class="product-name">Product A</div>
+                <div class="product-price">$20.00</div>
+                <div class="qty-control">
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-name">Product B</div>
+                <div class="product-price">$35.00</div>
+                <div class="qty-control">
+                    <button>-</button>
+                    <span>0</span>
+                    <button>+</button>
+                </div>
+            </div>
+        </div>
 
-  <div class="checkout">
-    <h3>Checkout</h3>
-    <input type="text" placeholder="Your Email">
-    <input type="text" placeholder="Delivery Address">
-    <input type="text" placeholder="Contact Number">
-    <input type="text" placeholder="Name">
-    <input type="text" placeholder="Delivery Instructions (Optional)">
+        <div class="checkout">
+            <h3>Checkout</h3>
+            <input type="text" placeholder="Your Email" />
+            <input type="text" placeholder="Delivery Address" />
+            <input type="text" placeholder="Contact Number" />
+            <input type="text" placeholder="Name" />
+            <input type="text" placeholder="Delivery Instructions (Optional)" />
 
-    <div class="checkout-summary">
-      Subtotal: $00.00<br>
-      VAT (12%): $00.00<br>
-      Total: $00.00
-    </div>
-    <button onclick="document.getElementById('paymentModal').style.display='flex'">Proceed to Pay</button>
-  </div>
+            <div class="checkout-summary">
+                Subtotal: $00.00<br />
+                VAT (12%): $00.00<br />
+                Total: $00.00
+            </div>
+            <button
+                onclick="document.getElementById('paymentModal').style.display='flex'"
+            >
+                Proceed to Pay
+            </button>
+        </div>
 
-  <div id="paymentModal" class="modal" onclick="this.style.display='none'">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="close" onclick="document.getElementById('paymentModal').style.display='none'">✕</span>
-      <p>Redirecting to payment gateway...</p>
-      <button class="cancel-btn" onclick="document.getElementById('paymentModal').style.display='none'">Cancel</button>
-      <button class="pay-btn">Pay</button>
-      <div>
-        <p>Did you forget anyone?</p>
-        <button>+ Add</button>
-      </div>
-    </div>
-  </div>
+        <div
+            id="paymentModal"
+            class="modal"
+            onclick="this.style.display='none'"
+        >
+            <div class="modal-content" onclick="event.stopPropagation()">
+                <span
+                    class="close"
+                    onclick="document.getElementById('paymentModal').style.display='none'"
+                    >✕</span
+                >
+                <p>Redirecting to payment gateway...</p>
+                <button
+                    class="cancel-btn"
+                    onclick="document.getElementById('paymentModal').style.display='none'"
+                >
+                    Cancel
+                </button>
+                <button class="pay-btn">Pay</button>
+                <div>
+                    <p>Did you forget anyone?</p>
+                    <button>+ Add</button>
+                </div>
+            </div>
+        </div>
 
-  <div class="status">
-    📦 Order Status: In Transit | Estimated Arrival: 2 hrs | Tracked by: MyLogistica
-  </div>
-</body>
+        <div class="status">
+            📦 Order Status: In Transit | Estimated Arrival: 2 hrs | Tracked by:
+            MyLogistica
+        </div>
+    </body>
 </html>

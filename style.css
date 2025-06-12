@@ -35,14 +35,21 @@ form {
     border: 1px solid #ccc;
 }
 
-.table {
+.table { /* This class seems unused, #inventory-table is used directly */
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+#inventory-table { /* Targeting the ID directly */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
     border: 1px solid #ddd;
     padding: 8px;
+    text-align: left; /* Default for tables, but good to be explicit */
 }
 
 th {
@@ -53,7 +60,8 @@ th {
     margin-top: 10px;
 }
 
-.add-btn, .remove-btn {
+.add-btn,
+.remove-btn {
     margin-left: 5px;
 }
 
@@ -62,6 +70,7 @@ th {
     font-size: 0.9em;
     color: #555;
 }
+
 /* owner.html styles */
 body {
     font-family: sans-serif;
@@ -73,6 +82,7 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
+
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 h2 {
@@ -106,6 +116,7 @@ table {
     border-collapse: collapse;
     margin-top: 20px;
 }
+
 th,
 td {
     border: 1px solid #ddd;
