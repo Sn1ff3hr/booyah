@@ -1,0 +1,19 @@
+{
+    "title": "Ingreso de Producto",
+    "assetId": "ID de Activo",
+    "productName": "Nombre del Producto",
+    "tax": "Impuesto/IVA",
+    "quantity": "Cantidad",
+    "description": "Descripción",
+    "purchaseAmount": "Total Pagado",
+    "salePrice": "Precio de Venta",
+    "updateInventory": "Actualizar Inventario",
+    "done": "Hecho",
+    "inventoryList": "Lista de Inventario",
+    "taxExpected": "Impuesto Esperado",
+    "amountEarned": "Monto a Ganar",
+    "percentEarnings": "% Ganancias",
+    "printQrMsg": "Para imprimir los detalles del producto del formulario, asegúrese de que esté completo. Esto imprimirá la página actual.",
+    "qrModalTitle": "Código QR del Producto",
+    "printQrButtonLabel": "Imprimir Código QR"
+}
