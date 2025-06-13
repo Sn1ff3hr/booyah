@@ -11,8 +11,10 @@
     "done": "Hecho",
     "inventoryList": "Lista de Inventario",
     "taxExpected": "Impuesto Esperado",
-    "amountEarned": "Monto a Ganar",
+    "futureAmountEarn": "Monto Futuro a Ganar",
+    "updateGeneralLedger": "Actualizar Libro Mayor",
     "percentEarnings": "% Ganancias",
+    "totalLabel": "Total",
     "printQrMsg": "Para imprimir los detalles del producto del formulario, asegúrese de que esté completo. Esto imprimirá la página actual.",
     "qrModalTitle": "Código QR del Producto",
     "printQrButtonLabel": "Imprimir Código QR"
