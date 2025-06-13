@@ -59,10 +59,10 @@ function validateProductForm() {
         isValid = false;
     }
     if (!totalPaidStr) {
-        setElementText('#total-paid-error', 'Total Paid is required.');
+        setElementText('#total-paid-error', 'Subtotal Paid is required.');
         isValid = false;
     } else if (isNaN(totalPaid) || totalPaid < 0) {
-        setElementText('#total-paid-error', 'Total Paid must be a non-negative number.');
+        setElementText('#total-paid-error', 'Subtotal Paid must be a non-negative number.');
         isValid = false;
     }
     if (isNaN(quantity) || quantity <= 0) {
