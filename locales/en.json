@@ -11,8 +11,10 @@
     "done": "Done",
     "inventoryList": "Inventory List",
     "taxExpected": "Tax Expected",
-    "amountEarned": "Amount to Earn",
+    "futureAmountEarn": "Future Amount to Earn",
+    "updateGeneralLedger": "Update General Ledger",
     "percentEarnings": "% Earnings",
+    "totalLabel": "Total",
     "printQrMsg": "To print product details from the form, ensure it's complete. This will print the current page.",
     "qrModalTitle": "Product QR Code",
     "printQrButtonLabel": "Print QR Code"

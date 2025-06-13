@@ -23,7 +23,7 @@ function renderInventoryTable() {
             <td>${item.taxes.toFixed(2)}</td>
             <td>${item.sale.toFixed(2)}</td>
             <td>${item.taxExpected.toFixed(2)}</td>
-            <td>${item.amountEarned.toFixed(2)}</td>
+            <td>${item.futureAmountEarn.toFixed(2)}</td>
             <td>${item.percentEarnings.toFixed(2)}%</td>
         `;
         // Future: Add image indicator like: <td>${item.imageFileName ? '📷' : ''}</td>
@@ -102,7 +102,7 @@ export function updateInventory() {
     const imageFile = getCurrentProductImageFile(); // Get the image File object
 
     const perUnitPaid = quantityVal > 0 ? paid / quantityVal : paid;
-    const percentEarnings = perUnitPaid > 0 ? ((sale - perUnitPaid) / perUnitPaid) * 100 : 0;
+    const percentEarnings = perUnitPaid > 0 ? ((perUnitPaid - sale) / perUnitPaid) * 100 : 0;
     const taxExpected = sale * DEFAULT_TAX_RATE;
 
     const newItem = {
@@ -114,7 +114,7 @@ export function updateInventory() {
         sale,
         quantity: quantityVal,
         taxExpected: taxExpected * quantityVal,
-        amountEarned: (sale - perUnitPaid) * quantityVal,
+        futureAmountEarn: (sale + taxExpected) * quantityVal,
         percentEarnings,
         imageFile: imageFile, // Store the File object (or null)
         imageFileName: imageFile ? imageFile.name : null // Store name for reference
@@ -130,12 +130,12 @@ export function updateInventory() {
 function updateTotals() {
     const totalsRow = getElement('#inventory-totals');
     if (!totalsRow) return;
-    let totalPaid = 0, totalTaxPaid = 0, totalTaxExpected = 0, totalAmountEarned = 0;
+    let totalPaid = 0, totalTaxPaid = 0, totalTaxExpected = 0, totalFutureAmount = 0;
     inventoryItems.forEach(item => {
         totalPaid += item.paid;
         totalTaxPaid += item.taxes;
         totalTaxExpected += item.taxExpected;
-        totalAmountEarned += item.amountEarned;
+        totalFutureAmount += item.futureAmountEarn;
     });
     totalsRow.innerHTML = `
         <td></td>
@@ -144,7 +144,7 @@ function updateTotals() {
         <td>${totalTaxPaid.toFixed(2)}</td>
         <td></td>
         <td>${totalTaxExpected.toFixed(2)}</td>
-        <td>${totalAmountEarned.toFixed(2)}</td>
+        <td>${totalFutureAmount.toFixed(2)}</td>
         <td></td>
     `;
 }

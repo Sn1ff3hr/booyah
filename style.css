@@ -11,11 +11,27 @@ form {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.form-fields {
+    flex: 1;
+}
+
+.form-fields label,
+.form-fields input,
+.form-fields textarea {
+    display: block;
+    width: 300px;
+    margin-bottom: 5px;
 }
 
 .image-input {
     position: relative;
     margin-bottom: 10px;
+    margin-right: 25px;
+    margin-left: auto;
 }
 
 .image-actions button {
@@ -329,4 +345,19 @@ header {
     padding: 10px;
     background: #e0f7fa;
     font-weight: bold;
+}
+
+.ledger-btn-container {
+    text-align: right;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+
+.ledger-btn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
 }
