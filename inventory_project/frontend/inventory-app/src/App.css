@@ -1,0 +1,282 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  line-height: 1.6;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  min-height: 100vh;
+  margin: 0;
+  font-size: 14px; /* Base font size */
+}
+
+.App {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px; /* Increased max-width for a wider layout */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8em; /* Responsive font size */
+}
+
+#productForm {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Form fields take available space, media box auto */
+  gap: 30px; /* Gap between form fields and media box */
+  align-items: start; /* Align items at the start of the grid area */
+  margin-bottom: 20px;
+}
+
+.form-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Responsive columns */
+  gap: 18px; /* Spacing between fields */
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #555;
+}
+
+.label-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Space between label text and input */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea,
+select {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95em;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #007bff; /* Highlight focus */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+button, .green-update-btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex; /* Align icon and text */
+  align-items: center;
+  justify-content: center;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  width: calc(50% - 10px); /* Adjust width considering the gap */
+  margin-right: 20px; /* Gap between buttons */
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.green-update-btn {
+  background-color: #28a745; /* Green color */
+  color: white;
+  width: calc(50% - 10px); /* Adjust width considering the gap */
+}
+
+.green-update-btn:hover {
+  background-color: #1e7e34;
+  transform: translateY(-2px);
+}
+
+.media-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 200px; /* Fixed width for the media box */
+}
+
+.media-preview {
+  width: 100%;
+  height: 150px; /* Fixed height for preview */
+  background-color: #e9ecef;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em; /* Icon size */
+  color: #adb5bd;
+}
+
+.media-btns {
+  display: flex;
+  gap: 10px; /* Space between media buttons */
+}
+
+.media-btn {
+  background: #6c757d;
+  color: white;
+  padding: 8px 10px;
+  font-size: 1.2em; /* Icon size in buttons */
+  border-radius: 5px;
+}
+
+.media-btn:hover {
+  background: #545b62;
+  transform: translateY(-1px);
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px; /* Space from label text */
+}
+
+.tooltip .tooltip-icon {
+  background-color: #6c757d;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  cursor: help;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 200px; /* Tooltip width */
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the icon */
+  left: 50%;
+  margin-left: -100px; /* Center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+  font-size: 0.85em; /* Smaller font for tooltip */
+  font-weight: normal; /* Normal weight for tooltip text */
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Table styles */
+#productTableContainer {
+  margin-top: 30px;
+  width: 100%; /* Ensure table container takes full width */
+  overflow-x: auto; /* Allow horizontal scrolling for responsiveness */
+}
+
+#productTable {
+  width: 100%; /* Table takes full width of its container */
+  border-collapse: collapse;
+  font-size: 0.9em; /* Slightly smaller font for table */
+}
+
+#productTable th,
+#productTable td {
+  border: 1px solid #ddd;
+  padding: 10px 12px; /* Padding for cells */
+  text-align: left;
+  vertical-align: middle; /* Align cell content vertically */
+}
+
+#productTable th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+#productTable tr:nth-child(even) {
+  background-color: #f8f9fa; /* Zebra striping for rows */
+}
+
+#productTable tr:hover {
+  background-color: #e9ecef; /* Highlight row on hover */
+}
+
+#productTable td button {
+  padding: 6px 10px;
+  font-size: 0.85em;
+  margin-right: 5px; /* Space between buttons in a cell */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) { /* Adjust for medium devices */
+  #productForm {
+    grid-template-columns: 1fr; /* Stack form fields and media box */
+  }
+  .media-box {
+    width: 100%; /* Media box takes full width */
+    margin-top: 20px;
+  }
+  .form-fields {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column size */
+  }
+  button[type="submit"], .green-update-btn {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px; /* Add space below buttons when stacked */
+  }
+  .green-update-btn {
+    margin-bottom: 0; /* No margin for the last button */
+  }
+}
+
+@media (max-width: 768px) { /* Adjust for small devices */
+  .App {
+    padding: 20px;
+  }
+  h1 {
+    font-size: 1.6em;
+  }
+  .form-fields {
+    grid-template-columns: 1fr; /* Single column for very small screens */
+  }
+   input[type="text"],
+   input[type="number"],
+   textarea,
+   select {
+    font-size: 1em; /* Slightly larger font for inputs on small screens for readability */
+   }
+}
