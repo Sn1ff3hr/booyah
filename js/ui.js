@@ -34,7 +34,7 @@ export function handleImageSelect(event) {
     currentImageFile = file; // Store the File object
 
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         const productImage = getElement('#product-image');
         if (productImage) {
             productImage.src = e.target.result; // Set preview
@@ -43,7 +43,6 @@ export function handleImageSelect(event) {
     };
     reader.readAsDataURL(file); // Read for preview purposes
 }
-
 
 export function addTaxField() {
     const container = getElement('#tax-container');
@@ -95,10 +94,13 @@ export function showStatusMessage(message, type = 'success', duration = 3000) {
     }, duration);
 }
 
-
 export function scanQRCode() {
     console.warn('QR scanning feature placeholder from ui.js.');
-    showStatusMessage('QR code scanning feature is not yet implemented.', 'error', 3000);
+    showStatusMessage(
+        'QR code scanning feature is not yet implemented.',
+        'error',
+        3000
+    );
 }
 
 export function displayProductQRCode() {
@@ -106,7 +108,10 @@ export function displayProductQRCode() {
     const productName = getValue('#product-name');
 
     if (!assetId && !productName) {
-        showStatusMessage('Please enter at least an Asset ID or Product Name to generate a QR code.', 'error');
+        showStatusMessage(
+            'Please enter at least an Asset ID or Product Name to generate a QR code.',
+            'error'
+        );
         return;
     }
 
@@ -121,7 +126,10 @@ export function displayProductQRCode() {
 
     if (!qrDisplay || !modal || !qrInfoText) {
         console.error('QR code modal elements not found.');
-        showStatusMessage('Could not display QR code modal. Elements missing.', 'error');
+        showStatusMessage(
+            'Could not display QR code modal. Elements missing.',
+            'error'
+        );
         return;
     }
 
@@ -137,9 +145,9 @@ export function displayProductQRCode() {
         text: qrData,
         width: 200,
         height: 200,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
+        colorDark: '#000000',
+        colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.H,
     });
 
     qrInfoText.textContent = `Asset ID: ${assetId || 'N/A'}, Name: ${productName || 'N/A'}`;
@@ -162,9 +170,13 @@ function printDisplayedQRCode() {
     const qrCodeImage = getElement('#qr-code-display img');
     if (qrCodeImage && qrCodeImage.src) {
         const printWindow = window.open('', '_blank');
-        printWindow.document.write('<html><head><title>Print QR Code</title><style>body { text-align: center; margin-top: 50px; } img { width: 300px; height: 300px; }</style></head><body>');
+        printWindow.document.write(
+            '<html><head><title>Print QR Code</title><style>body { text-align: center; margin-top: 50px; } img { width: 300px; height: 300px; }</style></head><body>'
+        );
         printWindow.document.write('<img src="' + qrCodeImage.src + '">');
-        printWindow.document.write('<script>window.onload = function() { window.print(); window.close(); };</script>');
+        printWindow.document.write(
+            '<script>window.onload = function() { window.print(); window.close(); };</script>'
+        );
         printWindow.document.write('</body></html>');
         printWindow.document.close();
     } else {
@@ -189,13 +201,16 @@ export function initUiEventListeners() {
     if (qrScanBtn) qrScanBtn.addEventListener('click', scanQRCode);
 
     const displayQrBtn = getElement('#print-qr-btn');
-    if (displayQrBtn) displayQrBtn.addEventListener('click', displayProductQRCode);
+    if (displayQrBtn)
+        displayQrBtn.addEventListener('click', displayProductQRCode);
 
     const closeQrModalBtn = getElement('#close-qr-modal');
-    if (closeQrModalBtn) closeQrModalBtn.addEventListener('click', closeQrModal);
+    if (closeQrModalBtn)
+        closeQrModalBtn.addEventListener('click', closeQrModal);
 
     const printActualQrBtn = getElement('#print-actual-qr-btn');
-    if(printActualQrBtn) printActualQrBtn.addEventListener('click', printDisplayedQRCode);
+    if (printActualQrBtn)
+        printActualQrBtn.addEventListener('click', printDisplayedQRCode);
 
     const modal = getElement('#qr-modal');
     if (modal) {

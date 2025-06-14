@@ -1,12 +1,21 @@
 // js/inventoryLogic.js
 'use strict';
 
-import { getValue, setValue, getElement, getElements, setText as setElementText } from './domUtils.js';
+import {
+    getValue,
+    setValue,
+    getElement,
+    getElements,
+    setText as setElementText,
+} from './domUtils.js';
 import { showStatusMessage } from './ui.js';
-import { getCurrentProductImageFile, resetCurrentImageFile as resetUiImageState } from './ui.js'; // Import image functions
+import {
+    getCurrentProductImageFile,
+    resetCurrentImageFile as resetUiImageState,
+} from './ui.js'; // Import image functions
 import { translatePage } from './i18n.js'; // For translating 'Total' in totals row - already present
 
-const DEFAULT_TAX_RATE = 0.10;
+const DEFAULT_TAX_RATE = 0.1;
 let inventoryItems = [];
 let nextItemId = 1;
 
@@ -14,7 +23,7 @@ function renderInventoryTable() {
     const inventoryBody = getElement('#inventory-body');
     if (!inventoryBody) return;
     inventoryBody.innerHTML = '';
-    inventoryItems.forEach(item => {
+    inventoryItems.forEach((item) => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${item.name}</td>
@@ -62,7 +71,10 @@ function validateProductForm() {
         setElementText('#total-paid-error', 'Subtotal Paid is required.');
         isValid = false;
     } else if (isNaN(totalPaid) || totalPaid < 0) {
-        setElementText('#total-paid-error', 'Subtotal Paid must be a non-negative number.');
+        setElementText(
+            '#total-paid-error',
+            'Subtotal Paid must be a non-negative number.'
+        );
         isValid = false;
     }
     if (isNaN(quantity) || quantity <= 0) {
@@ -70,13 +82,22 @@ function validateProductForm() {
         isValid = false;
     }
     if (futureSaleStr && (isNaN(futureSale) || futureSale < 0)) {
-        showStatusMessage('Future Sale Price, if entered, must be a non-negative number.', 'error');
+        showStatusMessage(
+            'Future Sale Price, if entered, must be a non-negative number.',
+            'error'
+        );
         isValid = false;
     }
     const taxInputs = getElements('.tax-input');
     for (const input of taxInputs) {
-        if (input.value && (isNaN(parseFloat(input.value)) || parseFloat(input.value) < 0)) {
-            showStatusMessage('All Tax/VAT fields, if entered, must be non-negative numbers.', 'error');
+        if (
+            input.value &&
+            (isNaN(parseFloat(input.value)) || parseFloat(input.value) < 0)
+        ) {
+            showStatusMessage(
+                'All Tax/VAT fields, if entered, must be non-negative numbers.',
+                'error'
+            );
             isValid = false;
             break;
         }
@@ -94,7 +115,7 @@ export function updateInventory() {
     const paid = parseFloat(getValue('#total-paid')) || 0;
     const taxInputs = getElements('.tax-input');
     const taxes = Array.from(taxInputs)
-        .map(i => parseFloat(i.value) || 0)
+        .map((i) => parseFloat(i.value) || 0)
         .reduce((a, b) => a + b, 0);
     const sale = parseFloat(getValue('#future-sale')) || 0;
     const quantityVal = parseInt(getValue('#quantity'), 10) || 1;
@@ -102,7 +123,8 @@ export function updateInventory() {
     const imageFile = getCurrentProductImageFile(); // Get the image File object
 
     const perUnitPaid = quantityVal > 0 ? paid / quantityVal : paid;
-    const percentEarnings = perUnitPaid > 0 ? ((perUnitPaid - sale) / perUnitPaid) * 100 : 0;
+    const percentEarnings =
+        perUnitPaid > 0 ? ((perUnitPaid - sale) / perUnitPaid) * 100 : 0;
     const taxExpected = sale * DEFAULT_TAX_RATE;
 
     const newItem = {
@@ -117,11 +139,16 @@ export function updateInventory() {
         futureAmountEarn: (sale + taxExpected) * quantityVal,
         percentEarnings,
         imageFile: imageFile, // Store the File object (or null)
-        imageFileName: imageFile ? imageFile.name : null // Store name for reference
+        imageFileName: imageFile ? imageFile.name : null, // Store name for reference
     };
 
     inventoryItems.push(newItem);
-    console.log('Item added with image file:', imageFile ? imageFile.name : 'No image', '; All items:', inventoryItems); // For debugging
+    console.log(
+        'Item added with image file:',
+        imageFile ? imageFile.name : 'No image',
+        '; All items:',
+        inventoryItems
+    ); // For debugging
     renderInventoryTable();
     clearFormInputs();
     showStatusMessage(`Product "${name}" added to inventory.`, 'success');
@@ -130,8 +157,11 @@ export function updateInventory() {
 function updateTotals() {
     const totalsRow = getElement('#inventory-totals');
     if (!totalsRow) return;
-    let totalPaid = 0, totalTaxPaid = 0, totalTaxExpected = 0, totalFutureAmount = 0;
-    inventoryItems.forEach(item => {
+    let totalPaid = 0,
+        totalTaxPaid = 0,
+        totalTaxExpected = 0,
+        totalFutureAmount = 0;
+    inventoryItems.forEach((item) => {
         totalPaid += item.paid;
         totalTaxPaid += item.taxes;
         totalTaxExpected += item.taxExpected;
@@ -164,10 +194,16 @@ function clearFormInputs() {
         input.value = '';
     });
     const taxContainer = getElement('#tax-container');
-    if (taxContainer) { // Ensure taxContainer exists
-        const allTaxInputsInContainer = taxContainer.querySelectorAll('.tax-input');
-        while (allTaxInputsInContainer.length > 1 && taxContainer.lastElementChild && taxContainer.lastElementChild.classList.contains('tax-input')) {
-             taxContainer.removeChild(taxContainer.lastElementChild);
+    if (taxContainer) {
+        // Ensure taxContainer exists
+        const allTaxInputsInContainer =
+            taxContainer.querySelectorAll('.tax-input');
+        while (
+            allTaxInputsInContainer.length > 1 &&
+            taxContainer.lastElementChild &&
+            taxContainer.lastElementChild.classList.contains('tax-input')
+        ) {
+            taxContainer.removeChild(taxContainer.lastElementChild);
         }
     }
     clearErrorMessages();

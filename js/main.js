@@ -16,11 +16,15 @@ function initCoreEventListeners() {
 
 function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js') // Adjusted path
-            .then(registration => {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        navigator.serviceWorker
+            .register('/service-worker.js') // Adjusted path
+            .then((registration) => {
+                console.log(
+                    'ServiceWorker registration successful with scope: ',
+                    registration.scope
+                );
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log('ServiceWorker registration failed: ', error);
             });
     }
@@ -32,7 +36,9 @@ async function initializeApp() {
     initUiEventListeners();
     initInventoryEventListeners(); // Added
     registerServiceWorker(); // Added
-    console.log("Application fully initialized with all modules and service worker registration.");
+    console.log(
+        'Application fully initialized with all modules and service worker registration.'
+    );
 }
 
 document.addEventListener('DOMContentLoaded', initializeApp);
