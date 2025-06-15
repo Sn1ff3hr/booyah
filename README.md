@@ -5,6 +5,7 @@ This repository contains a simple web-based inventory page. It demonstrates a fo
 ## Development
 
 This project now includes a `package.json` for managing dependencies and scripts:
+
 - To run linters: `npm run lint` (uses ESLint with Standard JS style guide)
 - To run tests (currently a placeholder): `npm test`
 
@@ -19,13 +20,16 @@ This project follows public security guidance from NIST and CISA. No third-party
 A `CNAME` file is included in this repository (`www.marxia.com`). If you are using a static hosting provider that supports CNAME files for custom domain configuration (like GitHub Pages or Netlify), ensure your DNS settings are correctly pointing your domain to the host.
 
 ## Security & Compliance
+
 The recommended deployment should enable HTTPS and HTTP security headers. The following are included or configured:
+
 - `Content-Security-Policy`: Configured via a meta tag in `index.html`.
 - `X-Content-Type-Options: nosniff` and `Referrer-Policy: same-origin`: These can be enabled via a `_headers` file in the repository, compatible with hosting platforms like Netlify and Cloudflare Pages.
 
 These headers help align with NIST and CISA best practices.
 
 ## Features
+
 - Product entry form with dynamic tax fields
 - Capture product images using the device camera
 - QR scanning placeholder triggered by the `-` icon

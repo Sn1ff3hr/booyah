@@ -1,17 +1,24 @@
 {
   "name": "my-project",
   "version": "1.0.0",
-  "description": "My awesome project",
+  "description": "Project with ESLint + Prettier setup",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
-    "lint": "eslint ./**/*.js"
+    "test": "cd inventory_project/frontend/inventory-app && npm test -- --watchAll=false",
+    "lint": "eslint . --ignore-pattern \"inventory_project/frontend/inventory-app/*\"",
+    "format": "prettier --write . --ignore-path .prettierignore"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gabriel",
+  "license": "MIT",
   "devDependencies": {
-    "eslint-config-standard": "^17.1.0",
-    "eslint": "^8.57.1"
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
