@@ -51,7 +51,7 @@
                 Total: $00.00
             </div>
             <button
-                onclick="document.getElementById('paymentModal').style.display='flex'"
+                id="proceed-to-pay"
             >
                 Proceed to Pay
             </button>
@@ -60,18 +60,16 @@
         <div
             id="paymentModal"
             class="modal"
-            onclick="this.style.display='none'"
+            
         >
-            <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-content">
                 <span
                     class="close"
-                    onclick="document.getElementById('paymentModal').style.display='none'"
                     >✕</span
                 >
                 <p>Redirecting to payment gateway...</p>
                 <button
                     class="cancel-btn"
-                    onclick="document.getElementById('paymentModal').style.display='none'"
                 >
                     Cancel
                 </button>
@@ -87,5 +85,6 @@
             📦 Order Status: In Transit | Estimated Arrival: 2 hrs | Tracked by:
             MyLogistica
         </div>
+        <script src="js/android.js"></script>
     </body>
 </html>
