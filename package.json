@@ -1,15 +1,15 @@
 {
-  "name": "my-project",
+  "name": "inventory-app",
   "version": "1.0.0",
-  "description": "Project with ESLint + Prettier setup",
+  "description": "Modern ESLint and Prettier configuration setup",
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "cd inventory_project/frontend/inventory-app && npm test -- --watchAll=false",
+    "dev": "vite",
+    "build": "vite build",
     "lint": "eslint . --ignore-pattern \"inventory_project/frontend/inventory-app/*\"",
-    "format": "prettier --write . --ignore-path .prettierignore"
+    "format": "prettier --write ."
   },
-  "keywords": [],
   "author": "Gabriel",
   "license": "MIT",
   "devDependencies": {

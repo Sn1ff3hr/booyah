@@ -19,7 +19,7 @@ const CACHE_FILES = [
   '/manifest.json',
   '/icon-192x192.png',
   '/icon-512x512.png',
-  '/CNAME', // Added
+  '/CNAME' // Added
 ];
 
 self.addEventListener('install', event => {

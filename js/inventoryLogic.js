@@ -6,7 +6,7 @@ import {
   setValue,
   getElement,
   getElements,
-  setText as setElementText,
+  setText as setElementText
 } from './domUtils.js';
 import { showStatusMessage } from './ui.js';
 import { getCurrentProductImageFile, resetCurrentImageFile as resetUiImageState } from './ui.js'; // Import image functions
@@ -123,7 +123,7 @@ export function updateInventory() {
     futureAmountEarn: (sale + taxExpected) * quantityVal,
     percentEarnings,
     imageFile: imageFile, // Store the File object (or null)
-    imageFileName: imageFile ? imageFile.name : null, // Store name for reference
+    imageFileName: imageFile ? imageFile.name : null // Store name for reference
   };
 
   inventoryItems.push(newItem);
