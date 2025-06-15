@@ -169,47 +169,34 @@ function closeQrModal() {
 function printDisplayedQRCode() {
     const qrCodeImage = getElement('#qr-code-display img');
     if (qrCodeImage && qrCodeImage.src) {
-        const printWindow = window.open('', '_blank');
+
+        const printWindow = window.open('', '_blank', 'noopener');
         const doc = printWindow.document;
 
-        const html = doc.createElement('html');
-        const head = doc.createElement('head');
-        const title = doc.createElement('title');
-        title.textContent = 'Print QR Code';
+        const meta = doc.createElement('meta');
+        meta.httpEquiv = 'Content-Security-Policy';
+        meta.content = "default-src 'none'; img-src 'self' data:; style-src 'self'";
 
-        const cspMeta = doc.createElement('meta');
-        cspMeta.httpEquiv = 'Content-Security-Policy';
-        cspMeta.content = "default-src 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'";
 
         const style = doc.createElement('style');
         style.textContent =
             'body { text-align: center; margin-top: 50px; } img { width: 300px; height: 300px; }';
+        doc.head.appendChild(meta);
+        doc.head.appendChild(style);
+        doc.title = 'Print QR Code';
 
-        head.appendChild(title);
-        head.appendChild(cspMeta);
-        head.appendChild(style);
-
-        const body = doc.createElement('body');
         const img = doc.createElement('img');
         img.src = qrCodeImage.src;
-        body.appendChild(img);
+        doc.body.appendChild(img);
 
         const script = doc.createElement('script');
-        script.textContent = 'window.onload = function() { window.print(); window.close(); }';
-        body.appendChild(script);
-
-        html.appendChild(head);
-        html.appendChild(body);
-
-        doc.open();
-        doc.write('<!DOCTYPE html>');
-        doc.close();
-        doc.replaceChild(html, doc.documentElement);
+        script.textContent =
+            'window.onload = function() { window.print(); window.close(); }';
+        doc.body.appendChild(script);
     } else {
         showStatusMessage('Could not find QR code image to print.', 'error');
     }
 }
-
 export function initUiEventListeners() {
     const addTaxBtn = getElement('#add-tax');
     if (addTaxBtn) addTaxBtn.addEventListener('click', addTaxField);
