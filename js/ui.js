@@ -169,16 +169,29 @@ function closeQrModal() {
 function printDisplayedQRCode() {
     const qrCodeImage = getElement('#qr-code-display img');
     if (qrCodeImage && qrCodeImage.src) {
-        const printWindow = window.open('', '_blank');
-        printWindow.document.write(
-            '<html><head><title>Print QR Code</title><style>body { text-align: center; margin-top: 50px; } img { width: 300px; height: 300px; }</style></head><body>'
-        );
-        printWindow.document.write('<img src="' + qrCodeImage.src + '">');
-        printWindow.document.write(
-            '<script>window.onload = function() { window.print(); window.close(); };</script>'
-        );
-        printWindow.document.write('</body></html>');
-        printWindow.document.close();
+        const printWindow = window.open('', '_blank', 'noopener');
+        const doc = printWindow.document;
+
+        const meta = doc.createElement('meta');
+        meta.httpEquiv = 'Content-Security-Policy';
+        meta.content = "default-src 'none'; img-src 'self' data:; style-src 'self'";
+
+        const style = doc.createElement('style');
+        style.textContent =
+            'body { text-align: center; margin-top: 50px; } img { width: 300px; height: 300px; }';
+
+        doc.head.appendChild(meta);
+        doc.head.appendChild(style);
+        doc.title = 'Print QR Code';
+
+        const img = doc.createElement('img');
+        img.src = qrCodeImage.src;
+        doc.body.appendChild(img);
+
+        const script = doc.createElement('script');
+        script.textContent =
+            'window.onload = function() { window.print(); window.close(); }';
+        doc.body.appendChild(script);
     } else {
         showStatusMessage('Could not find QR code image to print.', 'error');
     }
