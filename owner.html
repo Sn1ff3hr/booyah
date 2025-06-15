@@ -6,82 +6,235 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self';">
   <title>Business Inventory and Ledger</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="owner-style.css">
 </head>
 <body>
-  <div class="section">
-    <h2>Product Entry</h2>
-    <div class="form-grid">
-      <div>
-        <label for="owner-asset-id">Asset ID</label>
-        <input id="owner-asset-id" type="text" placeholder="e.g. SKU1234">
-      </div>
-      <div>
-        <label for="owner-product-name">Product Name</label>
-        <input id="owner-product-name" type="text">
-      </div>
-      <div>
-        <label for="owner-upload">Upload Image</label>
-        <input id="owner-upload" type="file" aria-label="Upload product image">
-        <img class="image-preview" src="" alt="Product image preview">
-      </div>
-      <div>
-        <label for="owner-tax">Tax/VAT (%)</label>
-        <input id="owner-tax" type="number" step="0.01">
-      </div>
-      <div>
-        <label for="owner-quantity">Quantity</label>
-        <input id="owner-quantity" type="number">
-      </div>
-      <div>
-        <label for="owner-total-paid">Subtotal Paid</label>
-        <input id="owner-total-paid" type="number" step="0.01">
-      </div>
-      <div>
-        <label for="owner-sale-price">Future Sale Price</label>
-        <input id="owner-sale-price" type="number" step="0.01">
-      </div>
-      <div>
-        <label for="owner-description">Description</label>
-        <textarea id="owner-description" rows="3"></textarea>
-      </div>
+  <!-- NAVIGATION BAR -->
+  <div class="nav-bar">
+    <div class="nav-left">
+      <button class="nav-hamburger" title="Menu" aria-label="Menu">&#9776;</button>
+      <span class="nav-title" id="mainNavTitle"
+        data-en="Product Entry"
+        data-es="Entrada de Producto">Product Entry</span>
+    </div>
+    <div class="nav-right">
+      <button class="nav-search" title="Search" aria-label="Search">&#128269;</button>
+      <button class="lang-btn" id="langToggle">ES</button>
     </div>
   </div>
-
-        <div class="section">
-            <h2>Inventory Ledger</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Asset ID</th>
-                        <th>Subtotal Paid</th>
-                        <th>Tax/VAT</th>
-                        <th>Sale Price</th>
-                        <th>Earnings</th>
-                        <th>Margin %</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Example Widget</td>
-                        <td>SKU123</td>
-                        <td>$10.00</td>
-                        <td>$1.20</td>
-                        <td>$20.00</td>
-                        <td>$8.80</td>
-                        <td>88%</td>
-                    </tr>
-                    <tr>
-                        <td>Low Profit Item</td>
-                        <td>SKU456</td>
-                        <td>$10.00</td>
-                        <td>$1.20</td>
-                        <td>$9.00</td>
-                        <td class="danger">-$2.20</td>
-                        <td class="danger">-22%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
+  <h1 id="mainTitle">🧾 Product Entry | Entrada de Producto</h1>
+  <form id="productForm" autocomplete="off">
+    <div class="form-fields">
+      <label>
+        <span class="label-row" data-en="Asset ID [What number do you use for this?]" data-es="ID del Producto [¿Qué número usas para esto?]">Asset ID [What number do you use for this?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Write any code or number to help you remember this product. If you don’t use codes, type the product’s name and a number, like APPLE-01."
+              data-es="Escribe cualquier código o número para recordar este producto. Si no usas códigos, escribe el nombre del producto y un número, como MANZANA-01.">
+              Write any code or number to help you remember this product. If you don’t use codes, type the product’s name and a number, like APPLE-01.
+            </span>
+          </span>
+        </span>
+        <input type="text" id="assetId" placeholder="e.g. SKU-01" required>
+        <div class="help" data-en="Example: SKU-01, APPLE-01, or any code that helps you." data-es="Ejemplo: SKU-01, MANZANA-01 o cualquier código que te ayude.">Example: SKU-01, APPLE-01, or any code that helps you.</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Product Name [What are you selling?]" data-es="Nombre del Producto [¿Qué vendes?]">Product Name [What are you selling?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Type the name of this product, like Apples, Soap, or Orange Juice."
+              data-es="Escribe el nombre del producto, como Manzanas, Jabón o Jugo de Naranja.">
+              Type the name of this product, like Apples, Soap, or Orange Juice.
+            </span>
+          </span>
+        </span>
+        <input type="text" id="productName" placeholder="e.g. Apples" required>
+        <div class="help" data-en="Type the product name. Example: Apples." data-es="Escribe el nombre. Ejemplo: Manzanas.">Type the product name. Example: Apples.</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Description [What is this?]" data-es="Descripción [¿Qué es esto?]">Description [What is this?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Say in a few words what the product is. For example: Red apples, big, fresh, 1kg pack."
+              data-es="Explica en pocas palabras qué es el producto. Ejemplo: Manzanas rojas, grandes, frescas, paquete de 1kg.">
+              Say in a few words what the product is. For example: Red apples, big, fresh, 1kg pack.
+            </span>
+          </span>
+        </span>
+        <textarea id="description" placeholder="e.g. Red, large, 1kg"></textarea>
+        <div class="help" data-en="Describe the product in simple words." data-es="Describe el producto en palabras simples.">Describe the product in simple words.</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Quantity [How many did you buy?]" data-es="Cantidad [¿Cuántos compraste?]">Quantity [How many did you buy?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Type the total number of items you bought for this product. Example: If you bought 10 apples, type 10. If unsure, count your products and put that number here."
+              data-es="Escribe el número total de unidades que compraste. Ejemplo: Si compraste 10 manzanas, pon 10. Si no sabes, cuenta tus productos y pon ese número aquí.">
+              Type the total number of items you bought for this product. Example: If you bought 10 apples, type 10. If unsure, count your products and put that number here.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="quantity" placeholder="e.g. 10" required>
+        <div class="help" data-en="Number of units you bought. Example: 10." data-es="Cantidad de unidades que compraste. Ejemplo: 10.">Number of units you bought. Example: 10.</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Subtotal Paid [How much did you pay in total before taxes?]" data-es="Subtotal Pagado [¿Cuánto pagaste en totalantes de cualquier impuesto?]">Subtotal Paid [How much did you pay in total?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Write the total money you paid for all these products, BEFORE taxes. Example: If you bought 10 apples for $2 each, you paid $20. Write 20 here."
+              data-es="Escribe el dinero total que pagaste por todos estos productos, ANTES de impuestos. Ejemplo: Si compraste 10 manzanas a $2 cada una, pagaste $20. Escribe 20 aquí.">
+              Write the total money you paid for all these products, BEFORE taxes. Example: If you bought 10 apples for $2 each, you paid $20. Write 20 here.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="subtotal" step="0.01" placeholder="e.g. 20.00" required>
+        <div class="help" data-en="How much you paid, no taxes. Example: 20.00" data-es="Cuánto pagaste, sin impuestos. Ejemplo: 20.00">How much you paid, no taxes. Example: 20.00</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="VAT % [Tax percentage?]" data-es="IVA % [¿Porcentaje de impuesto?]">VAT % [Tax percentage?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Write the tax percentage (IVA) you paid for these products. Example: If the tax is 12%, write 12. If you don't know, check your receipt or ask your supplier."
+              data-es="Pon el porcentaje de impuesto (IVA) que pagaste por estos productos. Ejemplo: Si el impuesto es 12%, pon 12. Si no sabes, mira tu recibo o pregunta al proveedor.">
+              Write the tax percentage (IVA) you paid for these products. Example: If the tax is 12%, write 12. If you don't know, check your receipt or ask your supplier.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="vat" step="0.01" placeholder="e.g. 12" required>
+        <div class="help" data-en="Type tax %, like 12" data-es="Pon el % de impuesto, por ejemplo 12">Type tax %, like 12</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Total Amount Paid [How much in total, including tax?]" data-es="Precio de Venta [¿Cuánto en total, con impuesto?]">Total Amount Paid [How much in total, including tax?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Calculated: This is the Subtotal Paid PLUS the VAT %. If subtotal is 20 and VAT is 12%, total is 22.40."
+              data-es="Calculado: Esto es el Subtotal Pagado MÁS el IVA %. Si el subtotal es 20 y el IVA es 12%, el total es 22.40.">
+              Calculated: This is the Subtotal Paid PLUS the VAT %. If subtotal is 20 and VAT is 12%, total is 22.40.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="totalPaid" step="0.01" placeholder="calculated" readonly>
+        <div class="help" data-en="Calculated automatically" data-es="Se calcula automáticamente">Calculated automatically</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Unit Price [No VAT] [How much is each item, no tax?]" data-es="Precio por Unidad [Sin IVA] [¿Cuánto cuesta cada uno, sin impuesto?]">Unit Price [No VAT] [How much is each item, no tax?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Calculated: Subtotal Paid divided by Quantity. Example: If subtotal is 20, quantity is 10, unit price is 2.00."
+              data-es="Calculado: Subtotal Pagado dividido para Cantidad. Ejemplo: Si el subtotal es 20 y la cantidad es 10, el precio por unidad es 2.00.">
+              Calculated: Subtotal Paid divided by Quantity. Example: If subtotal is 20, quantity is 10, unit price is 2.00.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="unitPrice" step="0.01" placeholder="calculated" readonly>
+        <div class="help" data-en="Calculated automatically" data-es="Se calcula automáticamente">Calculated automatically</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Future Selling Price per Unit [How much will you sell 1 unit for?]" data-es="Precio de Venta Futuro por Unidad [¿A cuánto venderás cada uno?]">Future Selling Price per Unit [How much will you sell 1 unit for?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Type the price you plan to sell EACH item for. Example: If you want to sell apples for $3 each, type 3."
+              data-es="Pon el precio que piensas vender CADA producto. Ejemplo: Si venderás manzanas a $3 cada una, pon 3.">
+              Type the price you plan to sell EACH item for. Example: If you want to sell apples for $3 each, type 3.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="futureSelling" step="0.01" placeholder="e.g. 3.00">
+        <div class="help" data-en="Your sale price per item, no tax. Example: 3.00" data-es="Tu precio de venta por unidad, sin impuesto. Ejemplo: 3.00">Your sale price per item, no tax. Example: 3.00</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Future VAT % [What will be the tax when you sell?]" data-es="IVA Futuro % [¿Cuál será el impuesto al vender?]">Future VAT % [What will be the tax when you sell?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Type the expected tax % when you sell this product. Example: 12"
+              data-es="Pon el % de impuesto esperado al vender este producto. Ejemplo: 12">
+              Type the expected tax % when you sell this product. Example: 12
+            </span>
+          </span>
+        </span>
+        <input type="number" id="futureVat" step="0.01" placeholder="e.g. 12">
+        <div class="help" data-en="Type tax %, like 12" data-es="Pon el % de impuesto, por ejemplo 12">Type tax %, like 12</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="Future Earnings [How much will you make when you sell all?]" data-es="Monto Futuro a Ganar [¿Cuánto ganarás al vender todo?]">Future Earnings [How much will you make when you sell all?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Calculated: Future Selling Price per Unit x Quantity. Example: 3 x 10 = 30."
+              data-es="Calculado: Precio de Venta Futuro por Unidad x Cantidad. Ejemplo: 3 x 10 = 30.">
+              Calculated: Future Selling Price per Unit x Quantity. Example: 3 x 10 = 30.
+            </span>
+          </span>
+        </span>
+        <input type="number" id="futureEarnings" step="0.01" placeholder="calculated" readonly>
+        <div class="help" data-en="Calculated automatically" data-es="Se calcula automáticamente">Calculated automatically</div>
+      </label>
+      <label>
+        <span class="label-row" data-en="% Earnings [What percent will you earn per item?]" data-es="% de Ganancias [¿Qué porcentaje ganarás por unidad?]">% Earnings [What percent will you earn per item?]
+          <span class="tooltip">
+            <span class="tooltip-icon">?</span>
+            <span class="tooltip-text"
+              data-en="Calculated: (Future Selling Price per Unit - Unit Price) / Unit Price x 100. Example: (3 - 2) / 2 x 100 = 50%"
+              data-es="Calculado: (Precio Venta Futuro - Precio por Unidad) / Precio por Unidad x 100. Ejemplo: (3 - 2) / 2 x 100 = 50%">
+              Calculated: (Future Selling Price per Unit - Unit Price) / Unit Price x 100. Example: (3 - 2) / 2 x 100 = 50%
+            </span>
+          </span>
+        </span>
+        <input type="number" id="grossMargin" step="0.01" placeholder="calculated" readonly>
+        <div class="help" data-en="Calculated automatically" data-es="Se calcula automáticamente">Calculated automatically</div>
+      </label>
+    </div>
+    <div class="image-box">
+      <div class="image-preview" id="imgPreview">📷</div>
+      <div class="image-actions">
+        <button type="button" class="img-btn" id="cameraBtn" title="Take Photo">📸</button>
+        <button type="button" class="img-btn" id="scanBtn" title="Scan QR">🔳</button>
+        <button type="button" class="img-btn" id="printBtn" title="Print QR">🖨️</button>
+      </div>
+      <input type="file" accept="image/*" style="display:none" id="uploadImg">
+      <div id="imgHelp" style="font-size:0.98em;opacity:0.88;margin-top:1.1em;text-align:center;color:#444;"
+        data-en="To print product details, fill all the fields. This will print just this form."
+        data-es="Para imprimir los detalles del producto, completa todos los campos. Esto imprimirá solo este formulario.">
+        To print product details, fill all the fields. This will print just this form.
+      </div>
+    </div>
+  </form>
+  <div class="form-actions">
+    <button type="submit" class="main-btn" form="productForm" id="addBtn"
+      data-en="Add to Inventory" data-es="Agregar a Inventario">Add to Inventory</button>
+    <button class="main-btn"
+      style="background:linear-gradient(135deg,var(--highlight),var(--primary));color:var(--text);"
+      id="ledgerBtn"
+      data-en="Update General Ledger" data-es="Actualizar Libro Mayor">Update General Ledger</button>
+  </div>
+  <table id="inventoryTable">
+    <thead>
+      <tr>
+        <th data-en="Asset ID" data-es="ID del Producto">Asset ID</th>
+        <th data-en="Product Name" data-es="Nombre del Producto">Product Name</th>
+        <th data-en="Quantity" data-es="Cantidad">Quantity</th>
+        <th data-en="Subtotal Paid" data-es="Subtotal Pagado">Subtotal Paid</th>
+        <th data-en="VAT %" data-es="IVA %">VAT %</th>
+        <th data-en="Total Amount Paid" data-es="Precio de Venta">Total Amount Paid</th>
+        <th data-en="Unit Price" data-es="Precio por Unidad">Unit Price</th>
+        <th data-en="Future Selling" data-es="Venta Futura">Future Selling</th>
+        <th data-en="Future VAT %" data-es="IVA Futuro %">Future VAT %</th>
+        <th data-en="Future Earnings" data-es="Monto Futuro a Ganar">Future Earnings</th>
+        <th data-en="% Earnings" data-es="% de Ganancias">% Earnings</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script src="js/owner.js"></script>
+</body>
 </html>

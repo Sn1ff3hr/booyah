@@ -169,6 +169,7 @@ function closeQrModal() {
 function printDisplayedQRCode() {
     const qrCodeImage = getElement('#qr-code-display img');
     if (qrCodeImage && qrCodeImage.src) {
+
         const printWindow = window.open('', '_blank', 'noopener');
         const doc = printWindow.document;
 
@@ -176,10 +177,10 @@ function printDisplayedQRCode() {
         meta.httpEquiv = 'Content-Security-Policy';
         meta.content = "default-src 'none'; img-src 'self' data:; style-src 'self'";
 
+
         const style = doc.createElement('style');
         style.textContent =
             'body { text-align: center; margin-top: 50px; } img { width: 300px; height: 300px; }';
-
         doc.head.appendChild(meta);
         doc.head.appendChild(style);
         doc.title = 'Print QR Code';
@@ -196,7 +197,6 @@ function printDisplayedQRCode() {
         showStatusMessage('Could not find QR code image to print.', 'error');
     }
 }
-
 export function initUiEventListeners() {
     const addTaxBtn = getElement('#add-tax');
     if (addTaxBtn) addTaxBtn.addEventListener('click', addTaxField);
