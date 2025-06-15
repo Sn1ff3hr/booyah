@@ -5,7 +5,9 @@ This repository contains a simple web-based inventory page. It demonstrates a fo
 ## Development
 
 This project now includes a `package.json` for managing dependencies and scripts:
+
 - To run linters: `npm run lint` (uses the flat configuration in `eslint.config.js`)
+
 - To run tests (currently a placeholder): `npm test`
 
 The site is configured as a Progressive Web App (PWA) with a service worker, manifest for offline support, and placeholder icon files (`icon-192x192.png`, `icon-512x512.png`). A strict Content Security Policy is included to reduce cross-site scripting risks.
