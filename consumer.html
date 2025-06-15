@@ -1,63 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://via.placeholder.com data:; style-src 'self'; script-src 'self';">
-  <title>End-Consumer Product Catalog</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer Page</title>
+    <link rel="stylesheet" href="consumer.css">
 </head>
 <body>
-  <h2>🛒 End-Consumer Product Catalog</h2>
-  <div class="catalog">
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product A image">
-      <div class="product-name">Product A</div>
-      <div class="product-price">$20.00</div>
-      <div class="qty-control">
-        <button aria-label="Decrease quantity">-</button>
-        <span>0</span>
-        <button aria-label="Increase quantity">+</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product B image">
-      <div class="product-name">Product B</div>
-      <div class="product-price">$35.00</div>
-      <div class="qty-control">
-        <button aria-label="Decrease quantity">-</button>
-        <span>0</span>
-        <button aria-label="Increase quantity">+</button>
-      </div>
-    </div>
-
-    <div class="product">
-      <img src="https://via.placeholder.com/150" alt="Product C image">
-      <div class="product-name">Product C</div>
-      <div class="product-price">$15.00</div>
-      <div class="qty-control">
-        <button aria-label="Decrease quantity">-</button>
-        <span>0</span>
-        <button aria-label="Increase quantity">+</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="checkout">
-    <h3>Checkout Information</h3>
-    <input type="text" placeholder="Your Email" aria-label="Email">
-    <input type="text" placeholder="Delivery Address" aria-label="Delivery Address">
-    <input type="text" placeholder="Contact Number" aria-label="Contact Number">
-    <input type="text" placeholder="Name" aria-label="Name">
-    <input type="text" placeholder="Delivery Instructions (Optional)" aria-label="Delivery Instructions">
-
-    <div class="checkout-summary">
-      Subtotal: $00.00<br>
-      VAT (12%): $00.00<br>
-      Total: $00.00
-    </div>
-  </div>
+    <header>
+        <h1>Our Products</h1>
+    </header>
+    <main>
+        <section id="product-listings">
+            <h2>Available Products</h2>
+            <div id="products-display">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </section>
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <div id="cart-display">
+                <p>Your cart is currently empty.</p>
+                <!-- Cart items will be loaded here by JavaScript -->
+            </div>
+            <button id="checkout">Checkout</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Our Store</p>
+    </footer>
+    <script src="consumer.js"></script>
 </body>
-
 </html>
