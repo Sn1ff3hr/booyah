@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+This file is intended for Tailwind CSS directives.
+Due to current npm environment issues, Tailwind CSS is not being processed.
+The actual styles are currently served from owner.css and consumer.css.
+Once npm is functional, running 'npm run build:css' (or similar)
+will generate 'dist/output.css' from this file.
+*/

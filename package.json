@@ -1,25 +1,35 @@
 {
-  "name": "your-project-name",
+  "name": "inventory-consumer-app",
   "version": "1.0.0",
-  "description": "A sample project fixed for Netlify deployment",
+  "description": "Inventory management and consumer ordering application.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write \"**/*.{html,js,css,json,md}\"",
+    "build:css": "postcss src/input.css -o dist/output.css",
+    "watch:css": "postcss src/input.css -o dist/output.css --watch",
+    "build": "npm-run-all build:css",
+    "start": "echo \"No start script defined yet. Serve HTML files directly.\""
   },
-  "author": "Gabriel",
-  "license": "MIT",
+  "keywords": [
+    "inventory",
+    "pwa",
+    "ecommerce"
+  ],
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^3.3.1",
-    "vite": "^5.2.10"
+    "autoprefixer": "^10.4.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.0",
+    "postcss-cli": "^9.0.0",
+    "prettier": "^2.5.0",
+    "tailwindcss": "^3.0.0"
   },
-  "dependencies": {
-    // Add your project dependencies here
-  }
+  "dependencies": {}
 }

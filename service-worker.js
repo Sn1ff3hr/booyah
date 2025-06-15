@@ -1,60 +1,71 @@
-const CACHE_VERSION = 'v3';
-const CACHE_NAME = `inventory-cache-${CACHE_VERSION}`;
-const CACHE_FILES = [
-    '/',
-    '/index.html',
-    '/owner.html',
-    '/consumer.html',
-    '/android.html',
-    '/fallback.html',
-    '/style.css',
-    // '/script.js', // Removed
-    '/js/main.js',
-    '/js/i18n.js',
-    '/js/domUtils.js',
-    '/js/ui.js',
-    '/js/inventoryLogic.js', // Added
-    '/locales/en.json',
-    '/locales/es.json',
-    '/manifest.json',
-    '/icon-192x192.png',
-    '/icon-512x512.png',
-    '/CNAME', // Added
-    'owner-style.css',
-    'js/owner.js',
+// service-worker.js
+
+const CACHE_NAME = 'inventory-order-cache-v1';
+const URLS_TO_CACHE = [
+  '/',
+  'consumer.html',
+  'owner.html',
+  'consumer.css',
+  'owner.css',
+  'consumer.js',
+  'owner.js',
+  'icons/icon-192x192.png',
+  'icons/icon-512x512.png'
+  // Add other important assets here, especially those for the offline experience
 ];
 
-self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME).then((cache) => cache.addAll(CACHE_FILES))
-    );
+self.addEventListener('install', event => {
+  console.log('Service Worker: Installing...');
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Service Worker: Caching app shell');
+        return cache.addAll(URLS_TO_CACHE);
+      })
+      .then(() => {
+        console.log('Service Worker: Install completed');
+        return self.skipWaiting();
+      })
+  );
 });
 
-self.addEventListener('activate', (event) => {
-    event.waitUntil(
-        caches
-            .keys()
-            .then((names) =>
-                Promise.all(
-                    names
-                        .filter(
-                            (name) =>
-                                name.startsWith('inventory-cache-') &&
-                                name !== CACHE_NAME
-                        )
-                        .map((name) => caches.delete(name))
-                )
-            )
-    );
-});
-
-self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request).then((response) => {
-            if (response) return response;
-            return fetch(event.request).catch(() =>
-                caches.match('/fallback.html')
-            );
+self.addEventListener('activate', event => {
+  console.log('Service Worker: Activating...');
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            console.log('Service Worker: Clearing old cache', cache);
+            return caches.delete(cache);
+          }
         })
-    );
+      );
+    }).then(() => {
+      console.log('Service Worker: Activation completed');
+      return self.clients.claim();
+    })
+  );
+});
+
+self.addEventListener('fetch', event => {
+  console.log('Service Worker: Fetching', event.request.url);
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        if (response) {
+          console.log('Service Worker: Found in cache', event.request.url);
+          return response; // Serve from cache
+        }
+        console.log('Service Worker: Not found in cache, fetching from network', event.request.url);
+        return fetch(event.request); // Fetch from network
+      })
+      .catch(error => {
+        console.error('Service Worker: Fetch error', error);
+        // Optionally, return a fallback page for navigation requests if offline
+        // if (event.request.mode === 'navigate') {
+        //   return caches.match('offline.html'); // You would need to create and cache an offline.html
+        // }
+      })
+  );
 });
