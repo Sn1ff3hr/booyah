@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `inventory-cache-${CACHE_VERSION}`;
 const CACHE_FILES = [
     '/',
@@ -20,6 +20,8 @@ const CACHE_FILES = [
     '/icon-192x192.png',
     '/icon-512x512.png',
     '/CNAME', // Added
+    'owner-style.css',
+    'js/owner.js',
 ];
 
 self.addEventListener('install', (event) => {
