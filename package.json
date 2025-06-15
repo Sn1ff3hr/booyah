@@ -20,6 +20,5 @@
     "vite": "^5.2.10"
   },
   "dependencies": {
-    // Add your project dependencies here
   }
 }
